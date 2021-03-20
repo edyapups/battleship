@@ -13,6 +13,7 @@ SAVE_FILE_NAME = 'game.save'
 
 def main(screen: curses.window, height, width):
     game: Optional[Game] = None
+    curses.curs_set(0)
     while True:
         display_string_builder: list[str, ...] = list()
         display_string_builder.append('###########################')
