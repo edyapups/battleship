@@ -1,4 +1,4 @@
-from battleship.exceptions import NotEnoughSpace
+from source.exceptions import NotEnoughSpace
 
 
 def check_text_size(output_builder: list[str, ...], height: int, width: int) -> None:

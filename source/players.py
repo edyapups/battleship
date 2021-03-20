@@ -5,8 +5,8 @@ from itertools import cycle
 from random import choice
 from typing import Optional
 
-from battleship.exceptions import QuitSignal
-from battleship.utils import check_text_size
+from source.exceptions import QuitSignal
+from source.utils import check_text_size
 
 
 class AbstractPlayer(ABC):

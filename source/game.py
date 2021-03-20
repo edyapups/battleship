@@ -1,9 +1,9 @@
 from itertools import cycle
 from typing import Optional, Dict
 
-from battleship.exceptions import MoveError, GameIsEnded
-from battleship.players import AbstractPlayer
-from battleship.board import Board
+from source.exceptions import MoveError, GameIsEnded
+from source.players import AbstractPlayer
+from source.board import Board
 
 
 class Game:

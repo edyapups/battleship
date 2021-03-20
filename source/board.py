@@ -1,7 +1,7 @@
 from random import randrange
 from typing import Callable, Optional
 
-from battleship.exceptions import BoardError, PlacementError, MoveError
+from source.exceptions import BoardError, PlacementError, MoveError
 
 
 class Board:

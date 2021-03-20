@@ -3,10 +3,10 @@ import argparse
 import pickle
 from typing import Optional
 
-from battleship.exceptions import QuitSignal, NotEnoughSpace
-from battleship.game import Game
-from battleship.players import HumanPlayer, RandomPlayer
-from battleship.utils import check_text_size
+from source.exceptions import QuitSignal, NotEnoughSpace
+from source.game import Game
+from source.players import HumanPlayer, RandomPlayer
+from source.utils import check_text_size
 
 SAVE_FILE_NAME = 'game.save'
 
