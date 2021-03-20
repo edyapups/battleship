@@ -3,10 +3,10 @@ import argparse
 import pickle
 from typing import Optional
 
-from battleship.exceptions import QuitSignal
+from battleship.exceptions import QuitSignal, NotEnoughSpace
 from battleship.game import Game
 from battleship.players import HumanPlayer, RandomPlayer
-
+from battleship.utils import check_text_size
 
 SAVE_FILE_NAME = 'game.save'
 
@@ -15,20 +15,24 @@ SAVE_FILE_NAME = 'game.save'
 def main(screen: curses.window, height, width):
     game: Optional[Game] = None
     while True:
-        welcome_str = '###########################\n' \
-                      '#  WELCOME TO BATTLESHIP  #\n' \
-                      '###########################\n\n'
-        winner_str = ''
-
-        instructions_str = 'Press n to start new game.\n'\
-                           'Press l to load the game (if exists).\n' \
-                           'Press q to quit the game.\n'
+        display_string_builder: list[str, ...] = list()
+        display_string_builder.append('###########################')
+        display_string_builder.append('#  WELCOME TO BATTLESHIP  #')
+        display_string_builder.append('###########################')
+        display_string_builder.append('')
 
         if game and game.winner:
-            winner_str = f'The winner of the last game is {game.winner}!\n'
+            display_string_builder.append(f'The winner of the last game is {game.winner}!')
+            display_string_builder.append('')
+
+        display_string_builder.append('Press n to start new game.')
+        display_string_builder.append('Press l to load the game (if exists).')
+        display_string_builder.append('Press q to quit the game.')
 
         screen.clear()
-        screen.addstr(0, 0, welcome_str + winner_str + instructions_str)
+        check_text_size(display_string_builder, *screen.getmaxyx())
+        display_string = '\n'.join(display_string_builder)
+        screen.addstr(0, 0, display_string)
 
         input_character = screen.getch()
 
@@ -66,4 +70,7 @@ if __name__ == '__main__':
     parser.add_argument('-height', type=int, help='Height of field. 5 or higher.', default=5)
     parser.add_argument('-width', type=int, help='Width of field. 5 or higher.', default=5)
     args = parser.parse_args()
-    curses.wrapper(main, args.height, args.width)
+    try:
+        curses.wrapper(main, args.height, args.width)
+    except NotEnoughSpace as err:
+        print('Your terminal is too small to display the game.')
