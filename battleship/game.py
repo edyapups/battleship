@@ -16,6 +16,9 @@ class Game:
         self._winner: Optional[AbstractPlayer] = None
 
     def play(self, screen) -> AbstractPlayer:
+        """
+        :raises GameIsEnded:
+        """
         if self._winner:
             raise GameIsEnded(f'This game is already over, {self._winner} is the winner.')
 

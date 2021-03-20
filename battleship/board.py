@@ -6,6 +6,9 @@ from battleship.exceptions import BoardError, PlacementError, MoveError
 
 class Board:
     def __init__(self, height, width):
+        """
+        :raises BoardError:
+        """
         if height < 5 or width < 5:
             raise BoardError('The height and width of the board '
                              'must be greater than 5')
@@ -20,6 +23,8 @@ class Board:
     def make_move(self, column: int, row: int) -> bool:
         """
         Applies a move to the cell at `column` and `row`.
+
+        :raises MoveError:
         """
         if column >= self._width or row >= self._height:
             raise MoveError('Move coordinates are out of bound.')
@@ -99,6 +104,8 @@ class Board:
     def _check_cell_is_empty(self, column: int, row: int):
         """
         Checks for the ship in the cell at `column` and `row`. If the ship is present, it raises an exception.
+
+        :raises PlacementError:
         """
         if self._board[row][column]:
             raise PlacementError('The desired area is not empty.')
@@ -113,6 +120,8 @@ class Board:
         """
         Inserts a ship of size `ship_size` with start at `column` and `row`.
         :param rotate: If the argument is True, then the ship will be located along the row-axis.
+
+        :raises PlacementError:
         """
         if (not rotate and (column + ship_size - 1 >= self._width) or
                 rotate and (row + ship_size - 1 >= self._height)):

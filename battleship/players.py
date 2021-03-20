@@ -91,8 +91,7 @@ class HumanPlayer(AbstractPlayer):
 
             if screen_width >= drawn_board_width * 2 + 1:
                 board = '\n'.join((' '.join(it) for it in zip(drawn_open_board_rows, drawn_hidden_board_rows)))
-            elif screen_width >= drawn_board_width:
-                board = '\n'.join(drawn_open_board_rows + [''] + drawn_hidden_board_rows)
+
             screen.getch()
 #             TODO Доделать
 
