@@ -26,6 +26,8 @@ class Board:
 
         :raises MoveError:
         """
+        if column < 0 or row < 0:
+            raise MoveError('Move coordinates must be non-negative numbers.')
         if column >= self._width or row >= self._height:
             raise MoveError('Move coordinates are out of bound.')
 
