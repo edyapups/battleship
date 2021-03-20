@@ -44,5 +44,5 @@ class TerminalError(Exception):
     pass
 
 
-class NotEnoughSpace(Exception):
+class NotEnoughSpace(TerminalError):
     pass

@@ -17,6 +17,8 @@ class Game:
 
     def play(self, screen) -> AbstractPlayer:
         """
+        Launches the game and returns the winner.
+
         :raises GameIsEnded:
         """
         if self._winner:
@@ -41,7 +43,7 @@ class Game:
             self._rotate_player()
 
     @property
-    def winner(self):
+    def winner(self) -> AbstractPlayer:
         return self._winner
 
     def _rotate_player(self):
@@ -49,10 +51,12 @@ class Game:
         self._next_player = next(self._players_cycle)
 
     def _make_step(self, screen, message: Optional[str] = None) -> bool:
-        private_board = self._boards[self._current_player].private_board
-        public_board = self._boards[self._next_player].public_board
+        current_player_board = self._boards[self._current_player].private_board
+        current_player_hit_board = self._boards[self._current_player].public_board
+        next_player_hit_board = self._boards[self._next_player].public_board
 
-        move_coords = self._current_player.move(screen, private_board, public_board, message)
+        move_coords = self._current_player.move(screen, current_player_board, current_player_hit_board,
+                                                next_player_hit_board, message)
         is_coup = self._boards[self._next_player].make_move(*move_coords)
 
         return is_coup

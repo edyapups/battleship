@@ -10,7 +10,6 @@ from battleship.utils import check_text_size
 
 SAVE_FILE_NAME = 'game.save'
 
-# TODO Сделать документацию ко всему проекту.
 
 def main(screen: curses.window, height, width):
     game: Optional[Game] = None
@@ -61,8 +60,6 @@ def main(screen: curses.window, height, width):
                     with open(SAVE_FILE_NAME, 'wb') as file:
                         pickle.dump(game, file, pickle.HIGHEST_PROTOCOL)
                         return
-
-
 
 
 if __name__ == '__main__':
