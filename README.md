@@ -24,8 +24,13 @@ You must have Python 3.9+ to run the game.
 ### Run the game
 
 ```sh
-$ python main.py
+$ python battleship.py
 ```
+| Parameter | Description |
+|--------------|-------------------------------|
+| `-h`/`--help`| Prints help.                  |
+| `-height`    | Sets the height of the board. |
+| `-width`     | Sets the width of the board.  |
 
 # Homework 1
 
