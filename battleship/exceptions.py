@@ -36,3 +36,13 @@ class GameError(Exception):
 
 class GameIsEnded(GameError):
     pass
+
+
+# Terminal errors
+
+class TerminalError(Exception):
+    pass
+
+
+class NotEnoughSpace(Exception):
+    pass
