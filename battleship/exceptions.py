@@ -34,5 +34,5 @@ class GameError(Exception):
     pass
 
 
-class GameIsEnded(Exception):
+class GameIsEnded(GameError):
     pass
